@@ -12,7 +12,7 @@ def read_cities(file_name):
     file = open(file_name, "r")
     road_map = []
     for line in file:
-        road_map.append(tuple((line).split("\t")))
+        road_map.append(tuple((line).strip().split("\t")))
     file.close()
     return road_map
     
@@ -22,8 +22,11 @@ def print_cities(road_map):
     Prints a list of cities, along with their locations. 
     Print only one or two digits after the decimal point.
     """
-    pass
-
+    cities_list = []
+    for element in road_map:
+        cities_list.append((element[1], round(float(element[2]),2), round(float(element[3]),2)))
+        print(cities_list)
+    
 def compute_total_distance(road_map):
     """
     Returns, as a floating point number, the sum of the distances of all 
