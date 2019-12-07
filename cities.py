@@ -12,7 +12,7 @@ def read_cities(file_name):
     file = open(file_name, "r")
     road_map = []
     for line in file:
-        road_map.append(tuple(line))
+        road_map.append(tuple((line).split("\t")))
     file.close()
     return road_map
     
