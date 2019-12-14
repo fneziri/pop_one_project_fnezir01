@@ -1,3 +1,6 @@
+import random
+import math
+
 def read_cities(file_name):
     """
     Read in the cities from the given `file_name`, and return 
@@ -25,7 +28,7 @@ def print_cities(road_map):
     cities_list = []
     for element in road_map:
         cities_list.append((element[1], round(float(element[2]),2), round(float(element[3]),2)))
-        print(cities_list)
+    print(cities_list)
     
 def compute_total_distance(road_map):
     """
@@ -33,7 +36,14 @@ def compute_total_distance(road_map):
     the connections in the `road_map`. Remember that it's a cycle, so that 
     (for example) in the initial `road_map`, Wyoming connects to Alabama...
     """
-    return 1.3
+    total_distance = 0.0
+    for i in range(0, len(road_map)):
+        x1 = float(road_map[i][2])
+        y1 = float(road_map[i][3])
+        x2 = float(road_map[(i + 1) % len(road_map)][2])
+        y2 = float(road_map[(i + 1) % len(road_map)][3])
+        total_distance += math.dist((x1,y1),(x2,y2))
+    return total_distance
 
 def swap_cities(road_map, index1, index2):
     """
@@ -79,6 +89,9 @@ def main():
     cycle and prints it out.
     """
     road_map = read_cities("city-data.txt")
+    print_cities(road_map)
+    compute_total_distance(road_map)
+    
 
 if __name__ == "__main__": #keep this in
     main()
