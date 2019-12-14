@@ -17,8 +17,7 @@ def read_cities(file_name):
     for line in file:
         road_map.append(tuple((line).strip().split("\t")))
     file.close()
-    return road_map
-    
+    return road_map    
   
 def print_cities(road_map):
     """
@@ -56,7 +55,15 @@ def swap_cities(road_map, index1, index2):
     Allow for the possibility that `index1=index2`,
     and handle this case correctly.
     """
-    return (index2, index1)
+    new_road_map = road_map[:]
+    original_index = new_road_map[index1]
+    if index1 == index2:
+        pass
+    else:
+        new_road_map[index1] = new_road_map[index2]
+        new_road_map[index2] = original_index
+    new_total_distance = compute_total_distance(new_road_map)
+    return (new_road_map, new_total_distance)
 
 def shift_cities(road_map):
     """
