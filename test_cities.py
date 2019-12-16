@@ -43,6 +43,29 @@ def test_swap_cities():
 
 def test_shift_cities():
     '''add your tests'''
-    assert shift_cities == 'the new road map'
+    road_map1 = [("Kentucky", "Frankfort", 38.197274, -84.86311),\
+                ("Delaware", "Dover", 39.161921, -75.526755),\
+                ("Minnesota", "Saint Paul", 44.95, -93.094)]
+    
+    new_road_map1 = [("Minnesota", "Saint Paul", 44.95, -93.094),\
+                     ("Kentucky", "Frankfort", 38.197274, -84.86311),\
+                     ("Delaware", "Dover", 39.161921, -75.526755)]
+
+    assert shift_cities(road_map1) == new_road_map1
+
+    road_map2 = [("Washington", "Olympia", 47.042418, -122.893077),\
+                  ("West Virginia", "Charleston", 38.349497, -81.633294),\
+                  ("Wisconsin", "Madison", 43.074722, -89.384444),\
+                  ("Wyoming", "Cheyenne", 41.145548, -104.802042)]
+
+    new_road_map2 = [("Wyoming", "Cheyenne", 41.145548, -104.802042),\
+                      ("Washington", "Olympia", 47.042418, -122.893077),\
+                      ("West Virginia", "Charleston", 38.349497, -81.633294),\
+                      ("Wisconsin", "Madison", 43.074722, -89.384444)]
+
+    assert shift_cities(road_map2) == new_road_map2
+
+
+    
 
 
