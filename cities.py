@@ -24,10 +24,11 @@ def print_cities(road_map):
     Prints a list of cities, along with their locations. 
     Print only one or two digits after the decimal point.
     """
-    cities_list = []
     for element in road_map:
-        cities_list.append((element[1], round(float(element[2]),2), round(float(element[3]),2)))
-    print(cities_list)
+        print("City: " + str(element[1])
+              + " | Latitude: " + str(round(float(element[2]),2))
+              + " | Longitude: ", str(round(float(element[3]),2)))
+    
     
 def compute_total_distance(road_map):
     """
@@ -124,7 +125,7 @@ def print_map(road_map):
         print("Trip", i+1, "| Start point: " + best_cycle[i][1] + ", End point: "
               + best_cycle[(i + 1) % len(best_cycle)][1] + " | Distance: ",
               cost_each_connection)
-    print("The total distance is: ", compute_total_distance(best_cycle))
+    print("\nThe total distance is: ", compute_total_distance(best_cycle))
 
 def visualise(road_map):
     pass
@@ -135,7 +136,9 @@ def main():
     cycle and prints it out.
     """
     road_map = read_cities("city-data.txt")
+    print("List of cities: \n")
     print_cities(road_map)
+    print("\nThe optimal journey consists of the following trips: \n")
     print_map(road_map)
     
 
