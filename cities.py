@@ -38,11 +38,11 @@ def compute_total_distance(road_map):
     """
     total_distance = 0.0
     for i in range(0, len(road_map)):
-        x1 = float(road_map[i][2])
-        y1 = float(road_map[i][3])
-        x2 = float(road_map[(i + 1) % len(road_map)][2])
-        y2 = float(road_map[(i + 1) % len(road_map)][3])
-        total_distance += math.dist((x1,y1),(x2,y2))
+        total_distance += math.dist((float(road_map[i][2]),
+                                     float(road_map[i][3])),
+                                    (float(road_map[(i + 1) % len(road_map)][2]),
+                                     float(road_map[(i + 1) % len(road_map)][3])))
+
     return total_distance
 
 def swap_cities(road_map, index1, index2):
@@ -117,11 +117,10 @@ def print_map(road_map):
     """
     best_cycle = find_best_cycle(road_map)
     for i in range(0, len(best_cycle)):
-        x1 = float(best_cycle[i][2])
-        y1 = float(best_cycle[i][3])
-        x2 = float(best_cycle[(i + 1) % len(best_cycle)][2])
-        y2 = float(best_cycle[(i + 1) % len(best_cycle)][3])
-        cost_each_connection = math.dist((x1,y1),(x2,y2))
+        cost_each_connection = math.dist((float(best_cycle[i][2]),
+                                          float(best_cycle[i][3])),
+                                         (float(best_cycle[(i + 1) % len(best_cycle)][2]),
+                                          float(best_cycle[(i + 1) % len(best_cycle)][3])))
         print("Trip", i+1, "| Start point: " + best_cycle[i][1] + ", End point: "
               + best_cycle[(i + 1) % len(best_cycle)][1] + " | Distance: ",
               cost_each_connection)
