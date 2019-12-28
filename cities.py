@@ -81,7 +81,13 @@ def find_best_cycle(road_map):
     After `10000` swaps/shifts, return the best cycle found so far.
     Use randomly generated indices for swapping.
     """
-    pass
+    distance = None
+    best_cycle = []
+    for i in range(0,5000):
+        index1 = len(road_map)*random.random()
+        index2 = len(road_map)*random.random()
+        swap_cities = swap_cities(road_map, index1, index2)
+        
 
 def print_map(road_map):
     """
