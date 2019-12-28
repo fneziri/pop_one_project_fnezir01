@@ -84,6 +84,8 @@ def find_best_cycle(road_map):
     new_road_map = road_map[:]
     shortest_distance = 100000000000
     best_cycle = []
+
+    #swap_cities
     
     for i in range(0, 5000):
         index1 = int(len(road_map)*random.random())
@@ -95,8 +97,16 @@ def find_best_cycle(road_map):
             shortest_distance = distance
             best_cycle = new_road_map
 
-    return best_cycle
-        
+    #shift_cities
+
+    for i in range(0, 5000):
+        new_road_map = shift_cities(new_road_map)
+        distance = compute_total_distance(new_road_map)
+        if distance < shortest_distance:
+            shortest_distance = distance
+            best_cycle = new_road_map
+
+    return best_cycle        
 
 def print_map(road_map):
     """
