@@ -114,6 +114,19 @@ def print_map(road_map):
     their connections, along with the cost for each connection 
     and the total cost.
     """
+    best_cycle = find_best_cycle(road_map)
+    for i in range(0, len(best_cycle)):
+        x1 = float(best_cycle[i][2])
+        y1 = float(best_cycle[i][3])
+        x2 = float(best_cycle[(i + 1) % len(best_cycle)][2])
+        y2 = float(best_cycle[(i + 1) % len(best_cycle)][3])
+        cost_each_connection = math.dist((x1,y1),(x2,y2))
+        print("Trip", i+1, "| Start point: " + best_cycle[i][1] + ", End point: "
+              + best_cycle[(i + 1) % len(best_cycle)][1] + " | Distance: ",
+              cost_each_connection)
+    print("The total distance is: ", compute_total_distance(best_cycle))
+
+def visualise(road_map):
     pass
 
 def main():
@@ -123,7 +136,7 @@ def main():
     """
     road_map = read_cities("city-data.txt")
     print_cities(road_map)
-    compute_total_distance(road_map)
+    print_map(road_map)
     
 
 if __name__ == "__main__": #keep this in
