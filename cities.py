@@ -104,6 +104,7 @@ def find_best_cycle(road_map):
         if distance < shortest_distance:
             shortest_distance = distance
             best_cycle = new_road_map
+            
 
     return best_cycle        
 
@@ -123,6 +124,7 @@ def print_map(road_map):
               + best_cycle[(i + 1) % len(best_cycle)][1] + " | Distance: ",
               cost_each_connection)
     print("\nThe total distance is: ", compute_total_distance(best_cycle))
+    visualise(best_cycle)
 
 def visualise(road_map):
     best_cycle = find_best_cycle(road_map)
@@ -139,6 +141,7 @@ def visualise(road_map):
         plt.annotate(i+1, xy = (longitudes_x[i], latitudes_y[i]))
 
     plt.show()
+    
 
 def main():
     """
@@ -150,7 +153,6 @@ def main():
     print_cities(road_map)
     print("\nThe optimal journey consists of the following trips: \n")
     print_map(road_map)
-    visualise(road_map)
     
 
 if __name__ == "__main__": #keep this in
