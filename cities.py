@@ -1,5 +1,6 @@
 import random
 import math
+import matplotlib.pyplot as plt
 
 def read_cities(file_name):
     """
@@ -27,7 +28,7 @@ def print_cities(road_map):
     for element in road_map:
         print("City: " + str(element[1])
               + " | Latitude: " + str(round(float(element[2]),2))
-              + " | Longitude: ", str(round(float(element[3]),2)))
+              + " | Longitude: "+ str(round(float(element[3]),2)))
     
     
 def compute_total_distance(road_map):
@@ -42,7 +43,6 @@ def compute_total_distance(road_map):
                                      float(road_map[i][3])),
                                     (float(road_map[(i + 1) % len(road_map)][2]),
                                      float(road_map[(i + 1) % len(road_map)][3])))
-
     return total_distance
 
 def swap_cities(road_map, index1, index2):
@@ -58,11 +58,11 @@ def swap_cities(road_map, index1, index2):
     """
     new_road_map = road_map
     original_index = new_road_map[index1]
-    if index1 == index2:
-        pass
-    else:
+    if index1 != index2:
         new_road_map[index1] = new_road_map[index2]
         new_road_map[index2] = original_index
+    else:
+        pass
     new_total_distance = compute_total_distance(new_road_map)
     return (new_road_map, new_total_distance)
 
@@ -72,8 +72,7 @@ def shift_cities(road_map):
     to the position i+1. The city at the last position moves to the position
     0. Return the new road map. 
     """
-    new_road_map = road_map
-    return new_road_map[-1:] + new_road_map[:-1]
+    return road_map[-1:] + road_map[:-1]
 
 def find_best_cycle(road_map):
     """
@@ -127,7 +126,15 @@ def print_map(road_map):
     print("\nThe total distance is: ", compute_total_distance(best_cycle))
 
 def visualise(road_map):
-    pass
+    best_cycle = find_best_cycle(road_map)
+    longitudes_x = []
+    latitudes_y = []
+    for i in range(0,len(best_cycle)):
+        longitudes_x.append(float(best_cycle[i][3]))
+        latitudes_y.append(float(best_cycle[i][2]))
+    plt.axis([-180,180,-90,90])
+    plt.plot(longitudes_x, latitudes_y, "ro")
+    plt.show()
 
 def main():
     """
@@ -139,6 +146,7 @@ def main():
     print_cities(road_map)
     print("\nThe optimal journey consists of the following trips: \n")
     print_map(road_map)
+    visualise(road_map)
     
 
 if __name__ == "__main__": #keep this in
