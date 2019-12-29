@@ -86,7 +86,6 @@ def find_best_cycle(road_map):
     best_cycle = []
 
     #swap_cities
-    
     for i in range(0, 5000):
         index1 = int(len(road_map)*random.random())
         index2 = int(len(road_map)*random.random())
@@ -129,11 +128,16 @@ def visualise(road_map):
     best_cycle = find_best_cycle(road_map)
     longitudes_x = []
     latitudes_y = []
+    
     for i in range(0,len(best_cycle)):
         longitudes_x.append(float(best_cycle[i][3]))
         latitudes_y.append(float(best_cycle[i][2]))
     plt.axis([-180,180,-90,90])
     plt.plot(longitudes_x, latitudes_y, "ro")
+
+    for i in range(0,len(best_cycle)):
+        plt.annotate(i+1, xy = (longitudes_x[i], latitudes_y[i]))
+
     plt.show()
 
 def main():
