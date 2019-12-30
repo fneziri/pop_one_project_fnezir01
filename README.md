@@ -178,6 +178,8 @@ The assignment as stated above will be graded on the basis of 70% total:
 
 ## Extension 
 
+**NOTE: I have used matplotlib for this exercise**
+
 To obtain additional 30% points, you will need to extend your implementation
 with functionality to *visualize* road maps. There are two ways to do that:
 

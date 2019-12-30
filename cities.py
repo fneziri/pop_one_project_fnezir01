@@ -1,6 +1,10 @@
+
+#for the visualise road map function (extension), matplotlib needs to be installed
+
 import random
 import math
 import matplotlib.pyplot as plt
+
 
 def read_cities(file_name):
     """
@@ -18,7 +22,8 @@ def read_cities(file_name):
     for line in file:
         road_map.append(tuple((line).strip().split("\t")))
     file.close()
-    return road_map    
+    return road_map
+
   
 def print_cities(road_map):
     """
@@ -45,6 +50,7 @@ def compute_total_distance(road_map):
                                      float(road_map[(i + 1) % len(road_map)][3])))
     return total_distance
 
+
 def swap_cities(road_map, index1, index2):
     """
     Take the city at location `index` in the `road_map`, and the 
@@ -66,6 +72,7 @@ def swap_cities(road_map, index1, index2):
     new_total_distance = compute_total_distance(new_road_map)
     return (new_road_map, new_total_distance)
 
+
 def shift_cities(road_map):
     """
     For every index i in the `road_map`, the city at the position i moves
@@ -73,6 +80,7 @@ def shift_cities(road_map):
     0. Return the new road map. 
     """
     return road_map[-1:] + road_map[:-1]
+
 
 def find_best_cycle(road_map):
     """
@@ -82,10 +90,11 @@ def find_best_cycle(road_map):
     Use randomly generated indices for swapping.
     """
     new_road_map = road_map
-    shortest_distance = 100000000000
+    shortest_distance = compute_total_distance(road_map)
     best_cycle = []
 
     #swap_cities
+    
     for i in range(0, 5000):
         index1 = int(len(road_map)*random.random())
         index2 = int(len(road_map)*random.random())
@@ -104,9 +113,9 @@ def find_best_cycle(road_map):
         if distance < shortest_distance:
             shortest_distance = distance
             best_cycle = new_road_map
-            
 
-    return best_cycle        
+    return best_cycle
+
 
 def print_map(road_map):
     """
@@ -124,7 +133,7 @@ def print_map(road_map):
               + best_cycle[(i + 1) % len(best_cycle)][1] + " | Distance: ",
               cost_each_connection)
     print("\nThe total distance is: ", compute_total_distance(best_cycle))
-    visualise(best_cycle)
+    
 
 def visualise(road_map):
     best_cycle = find_best_cycle(road_map)
@@ -153,7 +162,8 @@ def main():
     print_cities(road_map)
     print("\nThe optimal journey consists of the following trips: \n")
     print_map(road_map)
-    
+    visualise(road_map)
+
 
 if __name__ == "__main__": #keep this in
     main()
