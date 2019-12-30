@@ -143,7 +143,11 @@ def visualise(road_map):
     for i in range(0,len(best_cycle)):
         longitudes_x.append(float(best_cycle[i][3]))
         latitudes_y.append(float(best_cycle[i][2]))
+        
     plt.axis([-180,180,-90,90])
+    plt.title("Travelling Salesman Problem Visualised")
+    plt.xlabel("Longitude")
+    plt.ylabel("Latitude")
     plt.plot(longitudes_x, latitudes_y, "ro")
 
     for i in range(0,len(best_cycle)):
