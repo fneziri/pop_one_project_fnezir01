@@ -136,21 +136,20 @@ def print_map(road_map):
     
 
 def visualise(road_map):
-    best_cycle = find_best_cycle(road_map)
     longitudes_x = []
     latitudes_y = []
     
-    for i in range(0,len(best_cycle)):
-        longitudes_x.append(float(best_cycle[i][3]))
-        latitudes_y.append(float(best_cycle[i][2]))
+    for i in range(0,len(road_map)):
+        longitudes_x.append(float(road_map[i][3]))
+        latitudes_y.append(float(road_map[i][2]))
         
     plt.axis([-180,180,-90,90])
-    plt.title("Travelling Salesman Problem Visualised")
+    plt.title("Road Map Visualised")
     plt.xlabel("Longitude")
     plt.ylabel("Latitude")
     plt.plot(longitudes_x, latitudes_y, "ro")
 
-    for i in range(0,len(best_cycle)):
+    for i in range(0,len(road_map)):
         plt.annotate(i+1, xy = (longitudes_x[i], latitudes_y[i]))
 
     plt.show()
@@ -166,7 +165,7 @@ def main():
     print_cities(road_map)
     print("\nThe optimal journey consists of the following trips: \n")
     print_map(road_map)
-    visualise(road_map)
+    visualise(find_best_cycle(road_map))
 
 
 if __name__ == "__main__": #keep this in
