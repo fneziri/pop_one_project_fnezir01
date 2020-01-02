@@ -10,11 +10,8 @@ def read_cities(file_name):
     """
     Read in the cities from the given `file_name`, and return 
     them as a list of four-tuples: 
-
       [(state, city, latitude, longitude), ...] 
-
     Use this as your initial `road_map`, that is, the cycle 
-
       Alabama -> Alaska -> Arizona -> ... -> Wyoming -> Alabama.
     """
     file = open(file_name, "r")
@@ -56,9 +53,7 @@ def swap_cities(road_map, index1, index2):
     Take the city at location `index` in the `road_map`, and the 
     city at location `index2`, swap their positions in the `road_map`, 
     compute the new total distance, and return the tuple 
-
         (new_road_map, new_total_distance)
-
     Allow for the possibility that `index1=index2`,
     and handle this case correctly.
     """
