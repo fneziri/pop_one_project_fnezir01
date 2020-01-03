@@ -28,8 +28,8 @@ def print_cities(road_map):
     Print only one or two digits after the decimal point.
     """
     for element in road_map:
-        print("City: " + str(element[1])
-              + " | Latitude: " + str(round(float(element[2]),2))
+        print("City: " + str(element[1])\
+              + " | Latitude: " + str(round(float(element[2]),2))\
               + " | Longitude: "+ str(round(float(element[3]),2)))
     
     
@@ -125,8 +125,8 @@ def print_map(road_map):
         x2 = float(road_map[(i + 1) % len(road_map)][2])
         y2 = float(road_map[(i + 1) % len(road_map)][3])
         cost_each_connection = math.dist((x1,y1),(x2,y2))
-        print("Trip", i+1, "| Start point: " + road_map[i][1] + ", End point: "
-              + road_map[(i + 1) % len(road_map)][1] + " | Distance: ",
+        print("Trip", i+1, "| Start point: " + road_map[i][1] + ", End point: "\
+              + road_map[(i + 1) % len(road_map)][1] + " | Distance: ",\
               cost_each_connection)
     print("\nThe total distance is: ", compute_total_distance(road_map))
     
